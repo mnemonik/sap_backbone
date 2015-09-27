@@ -1,0 +1,18 @@
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+<IfModule mod_rewrite.c>
+#  DirectoryIndex index.php
+#  DirectorySlash off
+#  Options -Indexes -MultiViews
+  RewriteEngine on
+#  RewriteBase /api
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+#  RewriteCond %{REQUEST_FILENAME} !-l
+#  RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+#  RewriteRule .* index.php/$0 [NC,P]
+  RewriteRule ^(.*)$ index.php?q=$1 [QSA,PT,L,NC]
+</IfModule>
